@@ -1,14 +1,14 @@
 /////////////////////////////////////////////////////////////////
 //
 //  Utilities - Console Message
-// 
-//  
-// 
+//
+//
+//
 //  Output colored message in console.
 //  Also log the message in a log file.
 //
 //  Copyright (c) 2016 Bella Q
-//  
+//
 /////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -21,16 +21,14 @@
 
 // this is only for windows now
 // need to implement something else for OSX and Linux
-#if defined ( OS_WIN ) 
+#if defined ( OS_WIN )
 #include <windows.h>
 #include <iostream>
 #include <string>
 #include <fstream>
 #endif
 
-
 const bool  LOGMSG_LOG_TO_FILE_ENABLED = true;
-
 
 enum CoutColor
 {
@@ -42,8 +40,6 @@ enum CoutColor
 
 extern std::ofstream outFile;
 extern const std::string LOG_FILE;
-
-
 
 class ColorModifier
 {
@@ -77,7 +73,7 @@ private:
             default: break;
         }
 
-        // default 
+        // default
         return 10;
     }
 #endif
@@ -93,7 +89,6 @@ public:
         return _convertColorToConsoleColorID( _color );
     }
 #endif
-
 };
 
 class ColorReverter
@@ -110,7 +105,7 @@ private:
         }
     }
 
-#ifdef OS_WIN  
+#ifdef OS_WIN
 public:
     static CONSOLE_SCREEN_BUFFER_INFO _csbi;
 #endif
@@ -124,16 +119,15 @@ public:
         if( _instance == 0 )
         {
             _instance = new ColorReverter();
-#ifdef OS_WIN
+        #ifdef OS_WIN
             HANDLE hstdout = GetStdHandle( STD_OUTPUT_HANDLE );
             GetConsoleScreenBufferInfo( hstdout, &_csbi );
-#endif
+        #endif
         }
 
         return _instance;
     }
 };
-
 
 std::ostream& operator<<( std::ostream& os, const ColorModifier& mod );
 std::ostream& operator<<( std::ostream& os, const ColorReverter* rev );
@@ -142,8 +136,6 @@ extern ColorModifier ColorMod_Warning;
 extern ColorModifier ColorMod_Error;
 extern ColorModifier ColorMod_Pass;
 extern ColorReverter* ColorMod_Restore;
-
-
 
 class ColorCout
 {
@@ -205,8 +197,6 @@ public:
     {
         _colorWritten = t_written;
     }
-
-
 };
 
 class ColorEndl
@@ -222,7 +212,6 @@ public:
 };
 
 ColorCout& operator<<( ColorCout& t_os, const  ColorEndl& t_colorEndl );
-
 
 extern ColorCout LogError;
 extern ColorCout LogWarning;

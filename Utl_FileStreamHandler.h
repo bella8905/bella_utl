@@ -1,9 +1,9 @@
 /////////////////////////////////////////////////////////////////
 //
 //  Utilities - FileStream
-// 
-//  
-// 
+//
+//
+//
 //  Cross platform( hopefully ) file handler,
 //  reading in variables one by one, and omitting any comments,
 //  from a text file.
@@ -23,10 +23,10 @@
 //
 //  3.  any step failed will cause deinit the stream,
 //	    and >> will return 0 because stream is deinited.
-// 
+//
 //
 //  Copyright (c) 2016 Bella Q
-//  
+//
 /////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -44,17 +44,15 @@ using std::queue;
 
 namespace Utl
 {
-
     /////////////////////////////////////////////////////////////////
     //
     // read in files in a safer way
     // kindly strip any comments starting with "//"
     // and be nicer to different end flags
-    //  
+    //
     /////////////////////////////////////////////////////////////////
     class CFileStreamHandler
     {
-
     public:
         CFileStreamHandler( const std::string& t_File ) : _bInited( false )
         {
@@ -74,7 +72,7 @@ namespace Utl
         /////////////////////////////////////////////////////////////////
         //
         //  read operators
-        //  
+        //
         /////////////////////////////////////////////////////////////////
         CFileStreamHandler& operator >> ( int& t_Val );
         CFileStreamHandler& operator >> ( us& t_Val );
@@ -92,14 +90,12 @@ namespace Utl
         //
         //  This allows us to do something fancy like,
         //  while( ss >> node ) {...}
-        //  
+        //
         /////////////////////////////////////////////////////////////////
         operator void*( )
         {
             if( _bInited ) return this; else return 0;
         }
-
-
 
         bool IsInited() const
         {
@@ -111,7 +107,7 @@ namespace Utl
         //
         //  Deinit
         //  Clear cache and close file.
-        //  
+        //
         /////////////////////////////////////////////////////////////////
         void Deinit();
 
@@ -119,7 +115,7 @@ namespace Utl
         /////////////////////////////////////////////////////////////////
         //
         //  open a file
-        //  
+        //
         /////////////////////////////////////////////////////////////////
         void _init( const std::string& t_file );
 
@@ -130,12 +126,11 @@ namespace Utl
         /////////////////////////////////////////////////////////////////
         //
         //  http://stackoverflow.com/a/6089413
-        //  
+        //
         /////////////////////////////////////////////////////////////////
         bool  _safeReadLine( std::string& t_Str );
         void  _fillCachedStrs( const std::string& t_Str );
         int   _strToInt( const std::string& t_Str );
         float _strToFloat( const std::string& t_Str );
     };
-
 }

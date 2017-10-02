@@ -3,7 +3,6 @@
 #include "Utl_LogMsg.h"
 #include "Utl_Math.h"
 
-
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 //
@@ -14,7 +13,6 @@
 const float g_Pi = atan( 1.0f ) * 4.0f;
 const float g_Pi2o = 180.0f / g_Pi;
 const float g_o2Pi = g_Pi / 180.0f;
-
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -36,12 +34,10 @@ float DegToRad( const float& t_deg )
     return t_deg * g_o2Pi;
 }
 
-
-
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 //
-// vectors and points 
+// vectors and points
 //
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -55,7 +51,6 @@ glm::vec4 ToPositon( const glm::vec3& t_v )
     return glm::vec4( t_v, 1.f );
 }
 
-
 glm::vec4 ToDirection( const glm::vec3& t_v )
 {
     return glm::vec4( t_v, 0.f );
@@ -65,7 +60,6 @@ bool SamePoints( const glm::vec3& t_p1, const glm::vec3& t_p2 )
 {
     return Equals( t_p1.x, t_p2.x ) && Equals( t_p1.y, t_p2.y ) && Equals( t_p1.z, t_p2.z );
 }
-
 
 bool AreParallel( const glm::vec4& t_v1, const glm::vec4& t_v2 )
 {
@@ -90,19 +84,15 @@ bool IsPosition( const glm::vec4& t_v )
     return Equals( t_v.w, 1.f );
 }
 
-
 bool IsDirection( const glm::vec4& t_v )
 {
     return Equals( t_v.w, 0.f );
 }
 
-
-
-
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 //
-// matrix 
+// matrix
 //
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -113,7 +103,7 @@ glm::mat4 Matrix_ToMat4( const glm::mat3& t_rot )
         glm::vec4( t_rot[1], 0.f ),
         glm::vec4( t_rot[2], 0.f ),
         glm::vec4( 0.f, 0.f, 0.f, 1.f )
-        );
+    );
     return rot;
 }
 
@@ -123,9 +113,8 @@ glm::mat3 Matrix_ToMat3( const glm::mat4& t_mat )
         glm::vec3( t_mat[0] ),
         glm::vec3( t_mat[1] ),
         glm::vec3( t_mat[2] )
-        );
+    );
     return rot;
-
 }
 
 glm::mat4 Matrix_GetTransformMatrixFromTranslateRotateScale( const glm::vec3& t_Trans, const glm::vec3& t_Rotat, const glm::vec3& t_Scale )
@@ -137,7 +126,6 @@ glm::mat4 Matrix_GetTransformMatrixFromTranslateRotateScale( const glm::vec3& t_
     glm::mat4 scaleMat = glm::scale( t_Scale );
     return translationMat*rotationMat*scaleMat;
 }
-
 
 glm::mat4 Matrix_GetInverseTranslationRotation( const glm::mat4& t_transform )
 {
@@ -173,8 +161,6 @@ bool Matrix_IsOrthonormal( const glm::mat4& t_m, float t_lengthThreshold, float 
         abs( dot2 ) <= t_cosineThreshold;
 }
 
-
-
 // only for affine transformation
 void Matrix_GetTranslation( const glm::mat4& t_transform, glm::vec3& t_out )
 {
@@ -187,7 +173,6 @@ void Matrix_GetTranslation( const glm::mat4& t_transform, glm::mat4& t_out )
     t_out[3] = t_transform[3];
 }
 
-
 void Matrix_GetRotation( const glm::mat4& t_transform, glm::mat3& t_out )
 {
     glm::vec3 scale;
@@ -196,7 +181,7 @@ void Matrix_GetRotation( const glm::mat4& t_transform, glm::mat3& t_out )
     t_out = glm::mat3( rotScale[0] / scale[0],
                        rotScale[1] / scale[1],
                        rotScale[2] / scale[2]
-                       );
+    );
 }
 
 void Matrix_GetRotation( const glm::mat4& t_transform, glm::mat4& t_out )
@@ -205,7 +190,6 @@ void Matrix_GetRotation( const glm::mat4& t_transform, glm::mat4& t_out )
     Matrix_GetRotation( t_transform, rot );
     t_out = Matrix_ToMat4( rot );
 }
-
 
 void Matrix_GetScale( const glm::mat4& t_transform, glm::vec3& t_out )
 {
@@ -223,9 +207,8 @@ void Matrix_GetScale( const glm::mat4& t_transform, glm::mat4& t_out )
                        glm::vec4( 0.f, scale[1], 0.f, 0.f ),
                        glm::vec4( 0.f, 0.f, scale[2], 0.f ),
                        glm::vec4( 0.f, 0.f, 0.f, 1.f )
-                       );
+    );
 }
-
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -245,7 +228,6 @@ SRay SRay::GetRefletedRay( const glm::vec4& t_InstPoint, const glm::vec4& t_Surf
 
     return SRay( t_InstPoint, RflRayDir );
 }
-
 
 float SRay::RayIntersectTestWithSphere( const glm::vec4& t_center, const float& t_radius )
 {
@@ -281,7 +263,6 @@ float SRay::RayIntersectTestWithSphere( const glm::vec4& t_center, const float& 
     return t;
 }
 
-
 float SRay::RayIntersectTestWithAxisAlignedBox( const glm::vec3& t_mins, const glm::vec3& t_maxs )
 {
     glm::vec4 posObj = _Origin;
@@ -314,7 +295,6 @@ float SRay::RayIntersectTestWithAxisAlignedBox( const glm::vec3& t_mins, const g
     return tNear;
 }
 
-
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 //
@@ -327,4 +307,3 @@ bool IsPOT( int t_val )
 {
     return ( t_val  & ( t_val - 1 ) ) == 0;
 }
-

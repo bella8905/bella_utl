@@ -1,16 +1,16 @@
 /////////////////////////////////////////////////////////////////
 //
 //  Utilities - File Browser
-// 
-//  
-// 
+//
+//
+//
 //  Cross platform( hopefully ) file browser,
 //  open a file browser dialog and pass back the file name selected.
 //
-// 
+//
 //
 //  Copyright (c) 2016 Bella Q
-//  
+//
 /////////////////////////////////////////////////////////////////
 
 #include <tchar.h>
@@ -19,10 +19,8 @@
 
 namespace Utl
 {
-
     CFileBrowserDialog::CFileBrowserDialog()
     {
-
         _defaultExtension = 0;
         _filter = 0;
         _filterIndex = 0;
@@ -31,7 +29,6 @@ namespace Utl
         _owner = 0;
         _title = _T( "Open File..." );
     }
-
 
     bool CFileBrowserDialog::ShowDialog()
     {
@@ -57,5 +54,4 @@ namespace Utl
 
         return true;
     }
-
 }

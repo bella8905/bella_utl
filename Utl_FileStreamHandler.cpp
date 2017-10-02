@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////
 //
 //  Utilities - File Stream
-// 
-//  
 //
-//  
+//
+//
+//
 //
 //  Copyright (c) 2016 Bella Q
-//  
+//
 /////////////////////////////////////////////////////////////////
 
 #include <iterator>
@@ -17,7 +17,6 @@
 
 namespace Utl
 {
-
     void CFileStreamHandler::_init( const std::string& t_file )
     {
         if( _bInited )
@@ -65,7 +64,6 @@ namespace Utl
     {
         queue<std::string>().swap( _cachedStrs );
     }
-
 
     bool CFileStreamHandler::_getNextStrFromCachedStrsWithCommentStripped( std::string& t_Str )
     {
@@ -138,7 +136,6 @@ namespace Utl
         return true;
     }
 
-
     bool CFileStreamHandler::_safeReadLine( std::string& t_Str )
     {
         // The characters in the stream are read one-by-one using a std::streambuf.
@@ -175,7 +172,6 @@ namespace Utl
 
         if( t_Str.empty() )   return false;
         return true;
-
     }
 
     CFileStreamHandler& CFileStreamHandler::operator >> ( std::string& t_Val )
@@ -183,7 +179,6 @@ namespace Utl
         if( _bInited ) _getNextStr( t_Val );
         return *this;
     }
-
 
     CFileStreamHandler& CFileStreamHandler::operator >> ( int& t_Val )
     {
@@ -196,7 +191,6 @@ namespace Utl
 
         return *this;
     }
-
 
     CFileStreamHandler& CFileStreamHandler::operator >> ( bool& t_Val )
     {
@@ -246,7 +240,6 @@ namespace Utl
         return *this;
     }
 
-
     int CFileStreamHandler::_strToInt( const std::string& t_Str )
     {
         return atoi( t_Str.c_str() );
@@ -256,5 +249,4 @@ namespace Utl
     {
         return ( float )atof( t_Str.c_str() );
     }
-
 }

@@ -1,19 +1,18 @@
 /////////////////////////////////////////////////////////////////
 //
 //  Utilities - File related funcs
-// 
-//  
-// 
+//
+//
+//
 //
 //  Copyright (c) 2016 Bella Q
-//  
+//
 /////////////////////////////////////////////////////////////////
 
 #include "Utl_File.h"
 
 namespace Utl
 {
-
     bool DoesFileExist( std::string t_filePath )
     {
         FILE* file;
@@ -59,5 +58,4 @@ namespace Utl
         std::size_t dot = t_filespec.find_last_of( "." );
         t_ext = t_filespec.substr( dot + 1 );
     }
-
 }

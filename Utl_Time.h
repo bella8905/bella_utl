@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////
 //
 //  Utilities - Time
-// 
+//
 //
 //  Copyright (c) 2016 Bella Q
-//  
+//
 /////////////////////////////////////////////////////////////////
 #pragma once
 
@@ -16,8 +16,6 @@
 
 namespace Utl
 {
-
-
     enum EQURY_TIME_TYPE
     {
         TIME_STAMP,  // %d-%m-%Y %H:%M:%S
@@ -62,6 +60,4 @@ namespace Utl
             std::cout << "Time Elapsed: " << hours << "h, " << minutes << "m, " << seconds << "s." << std::endl;
         }
     };
-
 }
-

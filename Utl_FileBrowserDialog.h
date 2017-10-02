@@ -1,16 +1,16 @@
 /////////////////////////////////////////////////////////////////
 //
 //  Utilities - File Browser
-// 
-//  
-// 
+//
+//
+//
 //  Cross platform( hopefully ) file browser,
 //  open a file browser dialog and pass back the file name selected.
 //
-// 
+//
 //
 //  Copyright (c) 2016 Bella Q
-//  
+//
 /////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -21,10 +21,8 @@
 
 namespace Utl
 {
-
     class CFileBrowserDialog
     {
-
     public:
         CFileBrowserDialog();
         ~CFileBrowserDialog()
@@ -43,7 +41,5 @@ namespace Utl
 
     public:
         bool ShowDialog();
-
     };
-
 }

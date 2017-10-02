@@ -1,13 +1,12 @@
 /////////////////////////////////////////////////////////////////
 //
 //  Utilities - Console Message
-// 
-//  
+//
+//
 //
 //  Copyright (c) 2016 Bella Q
-//  
+//
 /////////////////////////////////////////////////////////////////
-
 
 #include <assert.h>
 #include <iostream>
@@ -15,7 +14,6 @@
 
 #include "Utl_LogMsg.h"
 #include "Utl_Time.h"
-
 
 #if defined ( OS_WIN )
 CONSOLE_SCREEN_BUFFER_INFO ColorReverter::_csbi;
@@ -26,7 +24,6 @@ ColorReverter* ColorReverter::_instance = 0;
 std::ofstream outFile;
 
 const std::string LOG_FILE = "GL_LOG.log";
-
 
 ColorModifier ColorMod_Warning( COLOR_WARNING );
 ColorModifier ColorMod_Error( COLOR_ERROR );
@@ -71,9 +68,6 @@ std::ostream& operator<<( std::ostream& os, const ColorReverter* rev )
     return os;
 }
 
-
-
-
 ColorCout& operator<<( ColorCout& t_os, const  ColorEndl& t_colorEndl )
 {
     if( t_colorEndl._rvt == 0 ) return t_os;
@@ -98,7 +92,6 @@ ColorCout& operator<<( ColorCout& t_os, const  ColorEndl& t_colorEndl )
 
     return t_os;
 }
-
 
 static void _initFileOutput()
 {
