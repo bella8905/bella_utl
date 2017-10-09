@@ -150,9 +150,9 @@ private:
     ColorModifier _colorMod;
     bool _colorWritten;
 
-public:
+private:
     template< typename T >
-    ColorCout& operator<<( T t_val )
+    ColorCout& _cout( T t_val )
     {
         std::string prepStr;
         if( !_colorWritten )
@@ -191,6 +191,25 @@ public:
         }
 
         return *this;
+    }
+
+public:
+    template< typename T >
+    ColorCout& operator<<( T t_val )
+    {
+        return _cout( t_val );
+    }
+
+    ColorCout& operator<<( const char* t_val )
+    {
+        if( t_val == nullptr )
+        {
+            return _cout( "null" );
+        }
+        else
+        {
+            return _cout( t_val );
+        }
     }
 
     void SetColorWritten( bool t_written )
