@@ -30,7 +30,7 @@ namespace Utl
         _title = _T( "Open File..." );
     }
 
-    bool CFileBrowserDialog::ShowDialog()
+    const TCHAR* CFileBrowserDialog::ShowDialog()
     {
         OPENFILENAME ofn;
 
@@ -50,8 +50,8 @@ namespace Utl
 
         GetOpenFileName( &ofn );
 
-        if( _tcslen( _fileName ) == 0 ) return false;
+        if( _tcslen( _fileName ) == 0 ) return nullptr;
 
-        return true;
+        return _fileName;
     }
 }

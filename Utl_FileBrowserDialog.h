@@ -40,6 +40,6 @@ namespace Utl
         TCHAR* _title;
 
     public:
-        bool ShowDialog();
+        const TCHAR* ShowDialog();
     };
 }
